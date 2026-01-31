@@ -40,24 +40,32 @@ PERSON_NAMES = [
 ]
 
 
+def create_hero(things, available_names):
+    """Создание персонажа с вещами"""
+    hero_class = choice([Warrior, Paladin])
+    name = choice(available_names)
+    available_names.remove(name)
+
+    hero = hero_class(
+        name,
+        uniform(0, 0.1),
+        randint(0, 50),
+        100,
+    )
+
+    count_things = randint(1, 4)
+    hero_things = [choice(things) for _ in range(count_things)]
+    hero.equip_things(hero_things)
+
+    return hero
+
 def main():
     things = sorted(THINGS, key=lambda thing: thing.percent_defense)
     heroes = []
+    available_names = PERSON_NAMES.copy()
 
     for _ in range(10):
-        hero_class = choice([Warrior, Paladin])
-        hero = hero_class(
-            choice(PERSON_NAMES),
-            uniform(0, 0.1),
-            randint(0, 50),
-            100,
-        )
-
-        count_things = randint(1, 4)
-        hero_things = [choice(things) for _ in range(count_things)]
-        hero.equip_things(hero_things)
-
-        heroes.append(hero)
+        heroes.append(create_hero(things, available_names))
 
     print("\n--- Бой начинается! ---\n")
 
