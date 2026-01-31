@@ -61,6 +61,7 @@ def create_random_hero(things, available_names):
 
     return hero
 
+
 def create_hero_for_player(things):
     """Создание своего персонажа с вещами"""
     while True:
@@ -80,7 +81,6 @@ def create_hero_for_player(things):
         else:
             print('Такого класса не существует!')
 
-
     name = input('Введите имя персонажа: ')
 
     hero = hero_class(
@@ -94,7 +94,14 @@ def create_hero_for_player(things):
     hero_things = [choice(things) for _ in range(count_things)]
     hero.equip_things(hero_things)
 
-    print(f'Были присвоены предметы: {Fore.CYAN}{", ".join(str(thing) for thing in hero_things)}')
+    print('Были присвоены предметы: '
+          f'{Fore.CYAN}{", ".join(str(thing) for thing in hero_things)}')
+    print('Персонаж создан:'
+          f'\n{Fore.MAGENTA}{name}'
+          f'\n{Fore.RESET}Процент защиты: '
+          f'{Fore.BLUE}{hero.percent_defense:.2f}'
+          f'\n{Fore.RESET}Атака: {Fore.YELLOW}{hero.attack_damage}'
+          f'\n{Fore.RESET}Жизни: {Fore.RED}{hero.hp}')
     input('\nНажмите любую клавишу, чтобы начать бой!')
 
     return hero
