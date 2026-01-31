@@ -47,10 +47,10 @@ def create_hero(things, available_names):
     available_names.remove(name)
 
     hero = hero_class(
-        name,
-        uniform(0, 0.1),
-        randint(0, 50),
-        100,
+        name=name,
+        percent_defense=uniform(0, 0.1),
+        attack_damage=randint(0, 50),
+        hp=100,
     )
 
     count_things = randint(1, 4)
@@ -78,14 +78,14 @@ def main():
         damage = attacker.attack_damage * (1 - defender.percent_defense)
         defender.take_damage(attacker.attack_damage)
 
-        print(f"{attacker} наносит удар по {defender} на {damage:.2f} урона. "
+        print(f"\n{attacker} наносит удар по {defender} на {damage:.2f} урона. "
               f"Осталось HP у {defender}: {defender.hp:.2f}")
 
         if defender.hp <= 0:
             print(f"{defender} погибает!")
             heroes.remove(defender)
 
-    print(f"\nПобедитель арены: {heroes[0]}!")
+    print(f"\n---------------\nПобедитель арены: {heroes[0]}!")
 
 
 if __name__ == '__main__':
