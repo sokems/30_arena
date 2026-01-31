@@ -18,6 +18,9 @@ class Thing:
         self.attack_damage = attack_damage
         self.hp = hp
 
+    def __str__(self):
+        return self.name
+
 
 class Person:
     """
