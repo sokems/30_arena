@@ -1,6 +1,6 @@
 from random import randint, choice, uniform
 
-from colorama import init, Fore, Back
+from colorama import init, Fore
 
 from classes import Thing, Warrior, Paladin, Elf
 
@@ -82,8 +82,10 @@ def main():
         defender.take_damage(attacker.attack_damage)
 
         print(f"\n{Fore.YELLOW}{attacker} {Fore.RESET}наносит удар по "
-              f"{Fore.BLUE}{defender} {Fore.RESET}на {Fore.RED}{damage:.2f} урона{Fore.RESET}. "
-              f"Осталось HP у {Fore.BLUE}{defender}: {Fore.GREEN}{defender.hp:.2f}")
+              f"{Fore.BLUE}{defender} {Fore.RESET}на "
+              f"{Fore.RED}{damage:.2f} урона{Fore.RESET}. "
+              f"Осталось HP у {Fore.BLUE}{defender}: "
+              f"{Fore.GREEN}{defender.hp:.2f}")
 
         if defender.hp <= 0:
             print(f"{defender} погибает!")

@@ -71,6 +71,7 @@ class Warrior(Person):
         super().__init__(name, percent_defense, attack_damage, hp)
         self.attack_damage *= 2
 
+
 class Elf(Person):
     """
     Класс наследуется от персонажа,
