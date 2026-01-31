@@ -59,6 +59,7 @@ def create_hero(things, available_names):
 
     return hero
 
+
 def main():
     things = sorted(THINGS, key=lambda thing: thing.percent_defense)
     heroes = []
