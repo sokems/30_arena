@@ -23,7 +23,7 @@ class Person:
     """
     Класс, содержащий в себе следующие параметры:
     - Имя, кол-во hp/жизней, базовую атаку, базовый процент защиты;
-    - Метод, принимающий на вход список вещей set_things(things);
+    - Метод, принимающий на вход список вещей equip_things(things);
     - Метод вычитания жизни на основе входной атаки take_damage(attack_damage);
     """
 
@@ -33,7 +33,7 @@ class Person:
         self.attack_damage = attack_damage
         self.percent_defense = percent_defense
 
-    def set_things(self, things):
+    def equip_things(self, things):
         """Метод принимает на вход список вещей и меняет базовые параметры"""
         for thing in things:
             self.hp += thing.hp
@@ -45,6 +45,9 @@ class Person:
         damage = attack_damage - attack_damage * self.percent_defense
         self.hp -= damage
 
+    def __str__(self):
+        return self.name
+
 
 class Paladin(Person):
     """
@@ -52,7 +55,8 @@ class Paladin(Person):
     при этом количество присвоенных жизней и процент защиты умножается на 2;
     """
 
-    def __init__(self):
+    def __init__(self, name, percent_defense, attack_damage, hp):
+        super().__init__(name, percent_defense, attack_damage, hp)
         self.hp *= 2
         self.percent_defense *= 2
 
@@ -63,5 +67,6 @@ class Warrior(Person):
     при этом атака умножается на 2.
     """
 
-    def __init__(self):
+    def __init__(self, name, percent_defense, attack_damage, hp):
+        super().__init__(name, percent_defense, attack_damage, hp)
         self.attack_damage *= 2
