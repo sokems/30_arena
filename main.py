@@ -2,7 +2,7 @@ from random import randint, choice, uniform
 
 from colorama import init, Fore, Back
 
-from classes import Thing, Warrior, Paladin
+from classes import Thing, Warrior, Paladin, Elf
 
 
 THINGS = [
@@ -44,7 +44,7 @@ PERSON_NAMES = [
 
 def create_hero(things, available_names):
     """Создание персонажа с вещами"""
-    hero_class = choice([Warrior, Paladin])
+    hero_class = choice([Warrior, Paladin, Elf])
     name = choice(available_names)
     available_names.remove(name)
 

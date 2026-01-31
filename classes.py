@@ -70,3 +70,15 @@ class Warrior(Person):
     def __init__(self, name, percent_defense, attack_damage, hp):
         super().__init__(name, percent_defense, attack_damage, hp)
         self.attack_damage *= 2
+
+class Elf(Person):
+    """
+    Класс наследуется от персонажа,
+    при этом атака делится на 2,
+    количество присвоенных жизней умножаются на 3.
+    """
+
+    def __init__(self, name, percent_defense, attack_damage, hp):
+        super().__init__(name, percent_defense, attack_damage, hp)
+        self.attack_damage /= 2
+        self.hp *= 3
