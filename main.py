@@ -1,5 +1,7 @@
 from random import randint, choice, uniform
 
+from colorama import init, Fore, Back
+
 from classes import Thing, Warrior, Paladin
 
 
@@ -61,6 +63,7 @@ def create_hero(things, available_names):
 
 
 def main():
+    init(autoreset=True)
     things = sorted(THINGS, key=lambda thing: thing.percent_defense)
     heroes = []
     available_names = PERSON_NAMES.copy()
@@ -68,7 +71,7 @@ def main():
     for _ in range(10):
         heroes.append(create_hero(things, available_names))
 
-    print("\n--- Бой начинается! ---\n")
+    print(f"\n{Fore.MAGENTA}--- Бой начинается! ---")
 
     while len(heroes) > 1:
         attacker, defender = choice(heroes), choice(heroes)
@@ -78,14 +81,15 @@ def main():
         damage = attacker.attack_damage * (1 - defender.percent_defense)
         defender.take_damage(attacker.attack_damage)
 
-        print(f"\n{attacker} наносит удар по {defender} на {damage:.2f} урона. "
-              f"Осталось HP у {defender}: {defender.hp:.2f}")
+        print(f"\n{Fore.YELLOW}{attacker} {Fore.RESET}наносит удар по "
+              f"{Fore.BLUE}{defender} {Fore.RESET}на {Fore.RED}{damage:.2f} урона{Fore.RESET}. "
+              f"Осталось HP у {Fore.BLUE}{defender}: {Fore.GREEN}{defender.hp:.2f}")
 
         if defender.hp <= 0:
             print(f"{defender} погибает!")
             heroes.remove(defender)
 
-    print(f"\n---------------\nПобедитель арены: {heroes[0]}!")
+    print(f"\n---------------\nПобедитель арены: {Fore.MAGENTA}{heroes[0]}!")
 
 
 if __name__ == '__main__':
